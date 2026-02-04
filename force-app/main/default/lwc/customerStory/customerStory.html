@@ -1,0 +1,18 @@
+<template>
+  <lightning-card title="Customer Story">
+    <div class="pad">
+      <template if:true={hasRequests}>
+        <template for:each={requests} for:item="r">
+          <div key={r.Id} class="row">
+            <div class="title">{r.Name}</div>
+            <div class="muted">{r.Status__c} • {r.Type__c} • {r.Priority__c}</div>
+          </div>
+        </template>
+      </template>
+
+      <template if:false={hasRequests}>
+        <div class="muted">Aucune demande en cours.</div>
+      </template>
+    </div>
+  </lightning-card>
+</template>

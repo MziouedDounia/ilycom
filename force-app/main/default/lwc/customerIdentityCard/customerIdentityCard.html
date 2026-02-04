@@ -1,0 +1,21 @@
+<template>
+  <lightning-card title="Client">
+    <div class="pad">
+      <div class="name">{accountName}</div>
+
+      <div class="muted slds-m-top_x-small">
+        <template if:true={phone}>📞 {phone}</template>
+        <template if:false={phone}>📞 —</template>
+      </div>
+
+      <div class="muted">
+        <template if:true={email}>✉️ {email}</template>
+        <template if:false={email}>✉️ —</template>
+      </div>
+
+      <div class="slds-m-top_small">
+        <lightning-button label="Ouvrir le compte" onclick={openAccount}></lightning-button>
+      </div>
+    </div>
+  </lightning-card>
+</template>

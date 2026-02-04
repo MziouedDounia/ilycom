@@ -1,0 +1,15 @@
+<template>
+  <c-kpi-tiles
+    active-subscriptions-count={activeSubscriptionsCount}
+    open-requests-count={openRequestsCount}
+    open-cases-count={openCasesCount}>
+  </c-kpi-tiles>
+
+  <div class="slds-m-top_small">
+    <c-subscriptions-list subscriptions={subscriptions}></c-subscriptions-list>
+  </div>
+
+  <div class="slds-m-top_small">
+    <c-cases-list cases-list={casesList}></c-cases-list>
+  </div>
+</template>

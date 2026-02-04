@@ -1,0 +1,18 @@
+<template>
+  <lightning-card title="Abonnements">
+    <div class="pad">
+      <template if:true={hasSubs}>
+        <template for:each={subscriptions} for:item="s">
+          <div key={s.Id} class="sub" data-id={s.Id} onclick={openSubscription}>
+            <div class="title">{s.Name}</div>
+            <div class="muted">{s.Status__c} • {s.Start_Date__c} → {s.End_Date__c}</div>
+          </div>
+        </template>
+      </template>
+
+      <template if:false={hasSubs}>
+        <div class="muted">Aucun abonnement.</div>
+      </template>
+    </div>
+  </lightning-card>
+</template>

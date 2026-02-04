@@ -1,0 +1,27 @@
+<template>
+  <div class="wrap">
+    <section class="left">
+      <c-cockpit-left-panel
+        account={account}
+        requests={requests}>
+      </c-cockpit-left-panel>
+    </section>
+
+    <section class="center">
+      <c-cockpit-center-panel
+        account-id={recordId}
+        active-subscriptions-count={activeSubscriptionsCount}
+        open-requests-count={openRequestsCount}
+        open-cases-count={openCasesCount}
+        subscriptions={subscriptions}
+        cases-list={casesList}>
+      </c-cockpit-center-panel>
+    </section>
+
+    <section class="right">
+      <c-cockpit-right-panel
+        account={account}>
+      </c-cockpit-right-panel>
+    </section>
+  </div>
+</template>

@@ -1,0 +1,18 @@
+<template>
+  <lightning-card title="Support (Cases)">
+    <div class="pad">
+      <template if:true={hasCases}>
+        <template for:each={casesList} for:item="c">
+          <div key={c.Id} class="row">
+            <div class="title">#{c.CaseNumber} — {c.Subject}</div>
+            <div class="muted">{c.Status} • {c.Priority}</div>
+          </div>
+        </template>
+      </template>
+
+      <template if:false={hasCases}>
+        <div class="muted">Aucun case ouvert.</div>
+      </template>
+    </div>
+  </lightning-card>
+</template>

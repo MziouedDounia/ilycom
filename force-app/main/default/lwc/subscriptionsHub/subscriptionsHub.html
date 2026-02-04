@@ -1,0 +1,37 @@
+<template>
+  <lightning-card title="Contrats / Abonnements">
+    <div class="slds-p-horizontal_small slds-p-top_small">
+      <div class="slds-grid slds-wrap slds-grid_vertical-align-center slds-gutters">
+        <div class="slds-col slds-size_1-of-1 slds-medium-size_8-of-12">
+          <lightning-input
+            type="search"
+            label="Rechercher"
+            value={keyword}
+            onchange={handleSearchChange}
+            placeholder="Nom contrat, client..."
+          >
+          </lightning-input>
+        </div>
+
+        <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-text-align_right">
+          <lightning-button
+            variant="brand"
+            label="Créer une nouvelle souscription"
+            onclick={goToNewSubscription}
+          >
+          </lightning-button>
+        </div>
+      </div>
+
+      <div class="slds-m-top_medium">
+        <lightning-datatable
+          key-field="Id"
+          data={rows}
+          columns={columns}
+          hide-checkbox-column
+        >
+        </lightning-datatable>
+      </div>
+    </div>
+  </lightning-card>
+</template>

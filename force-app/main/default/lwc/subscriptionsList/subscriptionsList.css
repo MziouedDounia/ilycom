@@ -1,0 +1,11 @@
+.pad { padding: 12px; }
+.sub {
+  border: 1px solid #eee;
+  border-radius: 14px;
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.sub:hover { border-color: #cfcfcf; }
+.title { font-weight: 800; }
+.muted { color: #666; font-size: 12px; }
