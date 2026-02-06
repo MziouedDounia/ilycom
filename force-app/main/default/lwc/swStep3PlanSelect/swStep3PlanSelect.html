@@ -1,0 +1,49 @@
+<template>
+    <div class="box">
+        <div class="title">Étape 3 : Sélection du forfait</div>
+        
+        <div class="toggleRow">
+            <span class="muted">Avec engagement</span>
+            <lightning-input type="toggle" checked={withEng} onchange={onToggle}></lightning-input>
+            <span class="muted">Sans engagement</span>
+        </div>
+
+        <template if:true={withEng}>
+            <div class="engRow">
+                <lightning-combobox 
+                    label="Durée (mois)" 
+                    value={months} 
+                    options={monthOptions} 
+                    onchange={handleMonthChange}>
+                </lightning-combobox>
+                
+                <lightning-input 
+                    type="number" 
+                    label="Pénalité" 
+                    value={penalty} 
+                    onchange={handlePenaltyChange}>
+                </lightning-input>
+            </div>
+        </template>
+
+        <template if:true={loading}>
+            <div class="muted">Chargement des forfaits...</div>
+        </template>
+
+        <div class="plans">
+            <template for:each={plans} for:item="p">
+                <div key={p.productId} class={p._cls} data-id={p.productId} onclick={selectPlan}>
+                    <div class="pTitle">{p.name}</div>
+                    <div class="muted">{p.description}</div>
+                    <div class="price">{p.price} / mois</div>
+                    <div class="btn">Sélectionner</div>
+                </div>
+            </template>
+        </div>
+
+        <div class="actions">
+            <lightning-button label="Retour" onclick={back}></lightning-button>
+            <lightning-button variant="brand" label="Suivant" onclick={next}></lightning-button>
+        </div>
+    </div>
+</template>

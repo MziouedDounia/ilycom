@@ -1,0 +1,26 @@
+<template>
+    <div class="box">
+        <div class="title">Étape 4 : Ajout d’un mobile (optionnel)</div>
+        
+        <template if:true={loading}>
+            <div class="muted">Chargement...</div>
+        </template>
+
+        <div class="grid">
+            <template for:each={devices} for:item="d">
+                <div key={d.productId} class={d._cls} data-id={d.productId} onclick={select}>
+                    <div class="dTitle">{d.name}</div>
+                    <div class="muted">{d.description}</div>
+                    <div class="price">{d.price}</div>
+                    <div class="btn">Choisir</div>
+                </div>
+            </template>
+        </div>
+
+        <div class="actions">
+            <lightning-button label="Retour" onclick={back}></lightning-button>
+            <lightning-button label="Ignorer" onclick={skip}></lightning-button>
+            <lightning-button variant="brand" label="Suivant" onclick={next}></lightning-button>
+        </div>
+    </div>
+</template>

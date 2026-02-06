@@ -1,0 +1,34 @@
+.pad { 
+    padding: 12px; 
+}
+
+.stepper { 
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+    margin-bottom: 12px; 
+}
+
+.dot {
+    width: 30px; 
+    height: 30px; 
+    border-radius: 999px;
+    border: 1px solid #ddd; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    font-weight: 800; 
+    color: #666; 
+    background: #fff;
+}
+
+.dot.active { 
+    border-color: #00898d; 
+    color: #00898d; 
+}
+
+.line { 
+    flex: 1; 
+    height: 2px; 
+    background: #eee; 
+}

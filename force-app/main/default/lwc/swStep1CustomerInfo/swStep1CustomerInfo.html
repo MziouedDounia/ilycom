@@ -1,0 +1,35 @@
+<template>
+    <div class="box">
+        <div class="title">Étape 1 : Confirmation des informations</div>
+
+        <div class="form-card">
+            <lightning-input
+                label="Nom"
+                value={localAccountName}
+                oninput={handleName}>
+            </lightning-input>
+
+            <lightning-input
+                label="Adresse"
+                value={localAddress}
+                oninput={handleAddress}>
+            </lightning-input>
+
+            <lightning-input
+                label="Numéro de téléphone"
+                value={localPhone}
+                oninput={handlePhone}>
+            </lightning-input>
+        </div>
+
+        <div class="actions">
+    <lightning-button
+        label="Valider et Continuer"
+        variant="brand"
+        class="chic-button"
+        onclick={next}>
+    </lightning-button>
+</div>
+
+    </div>
+</template>

@@ -45,12 +45,14 @@ export default class SubscriptionsHub extends NavigationMixin(LightningElement) 
   }
 
   goToNewSubscription() {
-    this[NavigationMixin.Navigate]({
-      type: 'standard__objectPage',
-      attributes: {
-        objectApiName: 'Subscription__c',
-        actionName: 'new'
-      }
-    });
-  }
+this[NavigationMixin.Navigate]({
+type: 'standard__navItemPage',
+attributes: {
+apiName: 'New_Subscription_Wizard' // <-- the TAB Developer Name
+    },
+state: {
+c__accountId: this.accountId // optional: if SubscriptionsHub is on Account 
+    }
+  });
+}
 }

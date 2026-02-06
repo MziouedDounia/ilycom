@@ -1,0 +1,72 @@
+/* Conteneur principal */
+.box { 
+    background: #ffffff; 
+    padding: 15px; 
+}
+
+/* Titre */
+.title { 
+    font-weight: 900; 
+    font-size: 18px; 
+    margin-bottom: 20px; 
+    color: #00898d; 
+}
+
+/* Carte (comme sur ton image) */
+.form-card {
+    background-color: #f3f3f3;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Labels Salesforce (LWC compliant) */
+.form-card lightning-input .slds-form-element__label {
+    font-weight: 700;
+    color: #000000;
+}
+
+/* Champs input */
+.form-card lightning-input {
+    --slds-c-input-color-background: #ffffff;
+    --slds-c-input-radius-border: 8px;
+    margin-bottom: 12px;
+}
+
+/* Zone bouton */
+.actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+}
+
+/* Bouton chic */
+.chic-button {
+    --slds-c-button-brand-color-background: #00898d;
+    --slds-c-button-brand-color-border: #00898d;
+    --slds-c-button-brand-color-text: #ffffff;
+
+    --slds-c-button-brand-color-background-hover: #00767a;
+    --slds-c-button-brand-color-border-hover: #00767a;
+
+    --slds-c-button-brand-color-background-active: #006b6f;
+
+    --slds-c-button-radius-border: 14px;
+
+    font-weight: 700;
+    letter-spacing: 0.3px;
+
+    width: 100%;
+    max-width: 280px;
+    height: 44px;
+}
+
+/* Optionnel : ombre élégante */
+.chic-button {
+    box-shadow: 0 6px 14px rgba(0, 137, 141, 0.25);
+}
+
+

@@ -1,0 +1,19 @@
+<template>
+<div class="box">
+<div class="title">Étape 2 : Choix du type d’offre</div>
+<div class="cards">
+<div class={mobileCls} data-type="Mobile" onclick={pick}>
+<div class="cardTitle">Forfait Mobile</div>
+<div class="cardSub">Appels + Data</div>
+</div>
+<div class={fixeCls} data-type="Fixe" onclick={pick}>
+<div class="cardTitle">Forfait Fixe</div>
+<div class="cardSub">Internet / Fibre</div>
+</div>
+</div>
+<div class="actions">
+<lightning-button label="Retour" onclick={back}></lightning-button>
+<lightning-button variant="brand" label="Suivant" onclick={next}></lightning-button>
+</div>
+</div>
+</template>
