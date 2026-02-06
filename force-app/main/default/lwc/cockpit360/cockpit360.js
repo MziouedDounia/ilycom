@@ -1,9 +1,9 @@
-import { LightningElement, api } from 'lwc';
+import { LightningElement, wire } from 'lwc';
+import { CurrentPageReference } from 'lightning/navigation';
 import getCockpit from '@salesforce/apex/Cockpit360Controller.getCockpit';
 
 export default class Cockpit360 extends LightningElement {
-  @api recordId; // Account Id injected by Record Page
-
+  accountId; // <-- from URL (App Page)
   account;
   subscriptions = [];
   requests = [];
@@ -13,13 +13,20 @@ export default class Cockpit360 extends LightningElement {
   openRequestsCount = 0;
   openCasesCount = 0;
 
-  connectedCallback() {
-    this.load();
+  @wire(CurrentPageReference)
+  getState(pageRef) {
+    const id = pageRef?.state?.c__accountId;
+    if (id && id !== this.accountId) {
+      this.accountId = id;
+      this.load(); // reload when account changes
+    }
   }
 
   async load() {
+    if (!this.accountId) return; // important
+
     try {
-      const dto = await getCockpit({ accountId: this.recordId });
+      const dto = await getCockpit({ accountId: this.accountId });
 
       this.account = dto.account;
       this.subscriptions = dto.subscriptions || [];
@@ -30,7 +37,6 @@ export default class Cockpit360 extends LightningElement {
       this.openRequestsCount = dto.openRequestsCount || 0;
       this.openCasesCount = dto.openCasesCount || 0;
     } catch (e) {
-      // You can show a toast later; for now just console
       // eslint-disable-next-line no-console
       console.error('Cockpit load error', e);
     }

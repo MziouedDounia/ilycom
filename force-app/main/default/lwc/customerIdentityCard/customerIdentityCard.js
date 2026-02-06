@@ -8,18 +8,13 @@ export default class CustomerIdentityCard extends NavigationMixin(LightningEleme
     return this.account?.Name || '—';
   }
 
-  get phone() {
-    return this.account?.Phone;
-  }
-
-  get email() {
-    // PersonEmail exists only for Person Accounts; ignore if not present
-    return this.account?.PersonEmail;
+  get subtitle() {
+    // adapt if you have a better field (Segment__c, Customer_Tier__c, etc.)
+    return this.account?.Industry ? `${this.account.Industry}` : 'Compte client';
   }
 
   openAccount() {
     if (!this.account?.Id) return;
-
     this[NavigationMixin.Navigate]({
       type: 'standard__recordPage',
       attributes: {
@@ -28,5 +23,11 @@ export default class CustomerIdentityCard extends NavigationMixin(LightningEleme
         actionName: 'view'
       }
     });
+  }
+
+  // demo button (optional)
+  mockCreateRequest() {
+    // later you can navigate to new Customer_Request__c record page
+    // for now do nothing
   }
 }

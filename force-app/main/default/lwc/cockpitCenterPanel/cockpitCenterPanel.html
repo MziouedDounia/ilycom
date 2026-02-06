@@ -1,15 +1,82 @@
 <template>
-  <c-kpi-tiles
-    active-subscriptions-count={activeSubscriptionsCount}
-    open-requests-count={openRequestsCount}
-    open-cases-count={openCasesCount}>
-  </c-kpi-tiles>
+  <!-- TOP: tabs + subscription cards -->
+  <section class="centerTop">
+    <div class="tabs">
+      <button class={tabClassOverview} data-tab="overview" onclick={onTab}>Overview</button>
+      <button class={tabClassOffers} data-tab="offers" onclick={onTab}>Offers</button>
+      <button class={tabClassRelated} data-tab="related" onclick={onTab}>Related</button>
+      <button class={tabClassSettings} data-tab="settings" onclick={onTab}>Settings</button>
+    </div>
 
-  <div class="slds-m-top_small">
-    <c-subscriptions-list subscriptions={subscriptions}></c-subscriptions-list>
-  </div>
+    <div class="subsRow">
+      <template if:true={hasSubs}>
+        <template for:each={subscriptions} for:item="s">
+          <article
+            key={s.Id}
+            class={subCardClass}
+            data-id={s.Id}
+            onclick={selectSub}>
+            <div class="subTitle">{s.Name}</div>
+            <div class="subMeta">{s.Status__c}</div>
+            <div class="subMini">
+              <span>{s.Start_Date__c}</span>
+              <span>→</span>
+              <span>{s.End_Date__c}</span>
+            </div>
+          </article>
+        </template>
+      </template>
 
-  <div class="slds-m-top_small">
-    <c-cases-list cases-list={casesList}></c-cases-list>
-  </div>
+      <template if:false={hasSubs}>
+        <div class="empty">Aucun abonnement.</div>
+      </template>
+    </div>
+  </section>
+
+  <!-- BOTTOM: big details + support -->
+  <section class="centerBottom">
+    <div class="detailsCard">
+      <div class="detailsHeader">
+        <div>
+          <div class="detailsTitle">{selectedTitle}</div>
+          <div class="detailsSub">{selectedStatus}</div>
+        </div>
+        <div class="kpisInline">
+          <div class="kpiMini">
+            <div class="kNum">{activeSubscriptionsCount}</div>
+            <div class="kLab">Active</div>
+          </div>
+          <div class="kpiMini">
+            <div class="kNum">{openRequestsCount}</div>
+            <div class="kLab">Requests</div>
+          </div>
+          <div class="kpiMini">
+            <div class="kNum">{openCasesCount}</div>
+            <div class="kLab">Cases</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="detailsBody">
+        <div class="deviceMock" aria-hidden="true"></div>
+
+        <div class="detailsText">
+          <div class="line"><b>Période</b> : {selectedPeriod}</div>
+          <div class="line"><b>Statut</b> : {selectedStatus}</div>
+          <div class="line muted">
+            (Démo) Ici tu peux afficher : options, usage, engagement, facture, etc.
+          </div>
+
+          <div class="detailsActions">
+            <lightning-button label="Ouvrir l’abonnement" variant="brand" onclick={openSelected}></lightning-button>
+            <lightning-button label="Créer un Case" onclick={mockCreateCase}></lightning-button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="supportCard">
+      <c-cases-list cases-list={casesList}></c-cases-list>
+    </div>
+  </section>
 </template>

@@ -1,0 +1,120 @@
+.centerTop{
+  background:#fff;
+  border-radius:18px;
+  padding:14px;
+  box-shadow:0 2px 10px rgba(0,0,0,.06);
+}
+
+.tabs{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-bottom:12px;
+}
+
+.t{
+  padding:8px 12px;
+  border-radius:12px;
+  border:1px solid #eef0f6;
+  background:#fff;
+  font-weight:700;
+  font-size:12px;
+}
+.t.active{
+  background:#1b4ddb;
+  color:#fff;
+  border-color:#1b4ddb;
+}
+
+.subsRow{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap:12px;
+}
+
+/*.subCardClass{}  (kept to mirror your original style pattern if needed) */
+article{
+  border:1px solid #eef0f6;
+  border-radius:16px;
+  padding:12px;
+  cursor:pointer;
+  background:#fff;
+}
+article:hover{ border-color:#cfd7ff; }
+
+.subTitle{ font-weight:900; }
+.subMeta{ color:#6b7280; font-size:12px; margin-top:4px; }
+.subMini{ display:flex; gap:6px; color:#6b7280; font-size:12px; margin-top:10px; }
+
+.empty{ color:#6b7280; font-size:13px; padding:12px; }
+
+.centerBottom{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:14px;
+  margin-top:14px;
+}
+
+.detailsCard, .supportCard{
+  background:#fff;
+  border-radius:18px;
+  padding:14px;
+  box-shadow:0 2px 10px rgba(0,0,0,.06);
+  min-width:0;
+}
+
+.detailsHeader{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  align-items:flex-start;
+}
+
+.detailsTitle{ font-size:16px; font-weight:900; }
+.detailsSub{ color:#6b7280; font-size:12px; margin-top:4px; }
+
+.kpisInline{
+  display:flex;
+  gap:10px;
+}
+.kpiMini{
+  border:1px solid #eef0f6;
+  border-radius:14px;
+  padding:8px 10px;
+  text-align:center;
+  min-width:70px;
+}
+.kNum{ font-weight:900; font-size:16px; }
+.kLab{ color:#6b7280; font-size:11px; }
+
+.detailsBody{
+  display:grid;
+  grid-template-columns: 160px 1fr;
+  gap:14px;
+  margin-top:14px;
+  align-items:start;
+}
+
+.deviceMock{
+  width:160px;
+  height:220px;
+  border-radius:18px;
+  border:1px solid #eef0f6;
+  background: linear-gradient(135deg,#f0f3ff,#ffffff);
+}
+
+.detailsText .line{ margin:8px 0; }
+.muted{ color:#6b7280; font-size:12px; }
+
+.detailsActions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:14px;
+}
+
+@media (max-width: 1200px){
+  .subsRow{ grid-template-columns:1fr; }
+  .centerBottom{ grid-template-columns:1fr; }
+  .detailsBody{ grid-template-columns:1fr; }
+}

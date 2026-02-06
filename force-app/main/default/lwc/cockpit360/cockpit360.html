@@ -1,27 +1,36 @@
 <template>
-  <div class="wrap">
-    <section class="left">
-      <c-cockpit-left-panel
-        account={account}
-        requests={requests}>
-      </c-cockpit-left-panel>
-    </section>
+  <template if:true={accountId}>
+    <div class="wrap">
+      <section class="left">
+        <c-cockpit-left-panel
+          account={account}
+          requests={requests}>
+        </c-cockpit-left-panel>
+      </section>
 
-    <section class="center">
-      <c-cockpit-center-panel
-        account-id={recordId}
-        active-subscriptions-count={activeSubscriptionsCount}
-        open-requests-count={openRequestsCount}
-        open-cases-count={openCasesCount}
-        subscriptions={subscriptions}
-        cases-list={casesList}>
-      </c-cockpit-center-panel>
-    </section>
+      <section class="center">
+        <c-cockpit-center-panel
+          account-id={accountId}
+          active-subscriptions-count={activeSubscriptionsCount}
+          open-requests-count={openRequestsCount}
+          open-cases-count={openCasesCount}
+          subscriptions={subscriptions}
+          cases-list={casesList}>
+        </c-cockpit-center-panel>
+      </section>
 
-    <section class="right">
-      <c-cockpit-right-panel
-        account={account}>
-      </c-cockpit-right-panel>
-    </section>
-  </div>
+      <section class="right">
+        <c-cockpit-right-panel account={account}></c-cockpit-right-panel>
+      </section>
+    </div>
+  </template>
+
+  <template if:false={accountId}>
+    <div style="padding:16px;">
+      <lightning-spinner alternative-text="Loading"></lightning-spinner>
+      <div style="margin-top:10px; color:#6b7280;">
+        Aucun compte sélectionné. Ouvre Cockpit360 depuis SubscriptionsHub.
+      </div>
+    </div>
+  </template>
 </template>

@@ -1,9 +1,38 @@
-.pad { padding: 12px; }
-.row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 0;
-  border-bottom: 1px solid #f0f0f0;
+.card{
+  background:#fff;
+  border-radius:18px;
+  padding:14px;
+  box-shadow:0 2px 10px rgba(0,0,0,.06);
 }
-.title { font-weight: 800; }
+.title{ font-weight:900; font-size:16px; }
+
+.seg{
+  display:flex;
+  gap:8px;
+  margin-top:12px;
+  flex-wrap:wrap;
+}
+.segBtn{
+  padding:8px 10px;
+  border-radius:12px;
+  border:1px solid #eef0f6;
+  background:#fff;
+  font-weight:800;
+  font-size:12px;
+}
+.segBtn.active{
+  background:#1b4ddb;
+  color:#fff;
+  border-color:#1b4ddb;
+}
+
+.rows{ margin-top:12px; display:grid; gap:10px; }
+.row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border:1px solid #eef0f6;
+  border-radius:14px;
+  padding:10px;
+}
+.lbl{ font-weight:800; color:#374151; }
