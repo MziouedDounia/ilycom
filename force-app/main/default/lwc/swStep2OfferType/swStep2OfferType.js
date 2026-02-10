@@ -2,32 +2,54 @@ import { LightningElement, api } from 'lwc';
 
 export default class SwStep2OfferType extends LightningElement {
     @api offerType;
-    selected;
 
-    connectedCallback() { 
-        this.selected = this.offerType; 
+    // Popup open/close (comme step1)
+    _isOpen = true;
+    @api get isOpen() { return this._isOpen; }
+    set isOpen(v) { this._isOpen = v === true || v === 'true'; }
+
+    selected = null;
+
+    connectedCallback() {
+        this.selected = this.offerType || null;
     }
 
-    get mobileCls() { 
-        return `card ${this.selected === 'Mobile' ? 'selected' : ''}`; 
+    get mobileCls() {
+        return `card ${this.selected === 'Mobile' ? 'selected' : ''}`;
     }
 
-    get fixeCls() { 
-        return `card ${this.selected === 'Fixe' ? 'selected' : ''}`; 
+    get fixeCls() {
+        return `card ${this.selected === 'Fixe' ? 'selected' : ''}`;
     }
 
-    pick(e) { 
-        this.selected = e.currentTarget.dataset.type; 
+    get disableNext() {
+        return !this.selected;
     }
 
-    back() { 
-        this.dispatchEvent(new CustomEvent('back')); 
+    stopPropagation(event) {
+        event.stopPropagation();
+    }
+
+    // Click backdrop => cancel
+    handleCancel() {
+        this.dispatchEvent(new CustomEvent('cancel'));
+    }
+
+    pick(event) {
+        this.selected = event.currentTarget.dataset.type;
+    }
+
+    back() {
+        this.dispatchEvent(new CustomEvent('back'));
     }
 
     next() {
         if (!this.selected) return;
-        this.dispatchEvent(new CustomEvent('next', { 
-            detail: { offerType: this.selected } 
-        }));
+
+        this.dispatchEvent(
+            new CustomEvent('next', {
+                detail: { offerType: this.selected }
+            })
+        );
     }
 }

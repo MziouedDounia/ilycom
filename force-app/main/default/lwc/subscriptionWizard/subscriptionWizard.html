@@ -1,59 +1,76 @@
 <template>
-<div class="pad">
-<div class="stepper">
-<div class={dot1}>1</div><div class="line"></div>
-<div class={dot2}>2</div><div class="line"></div>
-<div class={dot3}>3</div><div class="line"></div>
-<div class={dot4}>4</div><div class="line"></div>
-<div class={dot5}>5</div>
-</div>
-<template if:true={is1}>
-<c-sw-step1-customer-info
-account={account}
-account-id={accountId}
-start-date={startDate}
-onnext={onNext1}>
-</c-sw-step1-customer-info>
-</template>
-<template if:true={is2}>
-<c-sw-step2-offer-type
-offer-type={offerType}
-onback={onBack}
-onnext={onNext2}>
-</c-sw-step2-offer-type>
-</template>
-<template if:true={is3}>
-<c-sw-step3-plan-select
-offer-type={offerType}
-with-engagement={withEngagement}
-selected-plan={selectedPlan}
-engagement-months={engagementMonths}
-penalty-amount={penaltyAmount}
-onback={onBack}
-onnext={onNext3}>
-</c-sw-step3-plan-select>
-</template>
-<template if:true={is4}>
-<c-sw-step4-device-select
-selected-device={selectedDevice}
-onback={onBack}
-onskip={onSkip4}
-onnext={onNext4}>
-</c-sw-step4-device-select>
-</template>
-<template if:true={is5}>
-<c-sw-step5-confirm
-account={account}
-offer-type={offerType}
-with-engagement={withEngagement}
-selected-plan={selectedPlan}
-selected-device={selectedDevice}
-start-date={startDate}
-engagement-months={engagementMonths}
-penalty-amount={penaltyAmount}
-onback={onBack}
-onsubmit={onSubmit}>
-</c-sw-step5-confirm>
-</template>
-</div>
+    <div class="pad">
+
+        <!-- ================= STEPPER (VISIBLE STEPS 1–4 UNIQUEMENT) ================= -->
+        <template if:false={is5}>
+            <div class="stepper">
+                <div class={dot1}>1</div><div class="line"></div>
+                <div class={dot2}>2</div><div class="line"></div>
+                <div class={dot3}>3</div><div class="line"></div>
+                <div class={dot4}>4</div><div class="line"></div>
+                <div class={dot5}>5</div>
+            </div>
+        </template>
+
+        <!-- ================= STEP 1 ================= -->
+        <template if:true={is1}>
+            <c-sw-step1-customer-info
+                account={account}
+                account-id={accountId}
+                start-date={startDate}
+                onnext={onNext1}>
+            </c-sw-step1-customer-info>
+        </template>
+
+        <!-- ================= STEP 2 ================= -->
+        <template if:true={is2}>
+            <c-sw-step2-offer-type
+                offer-type={offerType}
+                onback={onBack}
+                onnext={onNext2}>
+            </c-sw-step2-offer-type>
+        </template>
+
+        <!-- ================= STEP 3 ================= -->
+        <template if:true={is3}>
+            <c-sw-step3-plan-select
+                offer-type={offerType}
+                with-engagement={withEngagement}
+                selected-plan={selectedPlan}
+                engagement-months={engagementMonths}
+                penalty-amount={penaltyAmount}
+                onback={onBack}
+                onnext={onNext3}>
+            </c-sw-step3-plan-select>
+        </template>
+
+        <!-- ================= STEP 4 ================= -->
+        <template if:true={is4}>
+            <c-sw-step4-device-select
+                selected-device={selectedDevice}
+                onback={onBack}
+                onskip={onSkip4}
+                onnext={onNext4}>
+            </c-sw-step4-device-select>
+        </template>
+
+        <!-- ================= STEP 5 (POPUP MODAL) ================= -->
+        <template if:true={is5}>
+            <c-sw-step5-confirm
+                account={account}
+                offer-type={offerType}
+                with-engagement={withEngagement}
+                selected-plan={selectedPlan}
+                selected-device={selectedDevice}
+                start-date={startDate}
+                engagement-months={engagementMonths}
+                penalty-amount={penaltyAmount}
+
+                onback={onBack}
+                oncancel={onBack}
+                onsubmit={onSubmit}>
+            </c-sw-step5-confirm>
+        </template>
+
+    </div>
 </template>

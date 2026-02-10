@@ -1,23 +1,47 @@
 <template>
-    <div class="box">
-        <div class="title">Étape 5 : Confirmation & Création</div>
-        
-        <div class="recap">
-            <div><b>Client:</b> {account.name}</div>
-            <div><b>Type:</b> {offerType}</div>
-            <div><b>Forfait:</b> {selectedPlan.name} — {selectedPlan.price}/mois</div>
-            <div><b>Engagement:</b> {engText}</div>
+  <template if:true={isOpen}>
+    <div class="backdrop" onclick={handleCancel}></div>
+
+    <section class="modal" role="dialog" aria-modal="true">
+      <div class="modal-container" onclick={stopPropagation}>
+
+        <header class="modal-header">
+          <div>
+            <h2 class="title">Devis {quoteNumberLabel} créé avec succès !</h2>
             
-            <template if:true={selectedDevice}>
-                <div><b>Mobile:</b> {selectedDevice.name}</div>
-            </template>
-            
-            <div><b>Début:</b> {startDate}</div>
+          </div>
+        </header>
+
+        <div class="stepper-container">
+          <div class="stepper-line"></div>
+          <div class="step done"><span>1</span></div>
+          <div class="step done"><span>2</span></div>
+          <div class="step done"><span>3</span></div>
+          <div class="step done"><span>4</span></div>
+          <div class="step active"><span>5</span></div>
         </div>
 
-        <div class="actions">
-            <lightning-button label="Retour" onclick={back}></lightning-button>
-            <lightning-button variant="brand" label="Terminer et Activer" onclick={submit}></lightning-button>
+        <div class="modal-body">
+          <div class="recapCard">
+            <div class="recapTitle">Résumé de la commande :</div>
+
+            <div class="recapLine">{planLine}</div>
+
+            <template if:true={hasDevice}>
+              <div class="recapSection">Mobile :</div>
+              <div class="recapLine">{deviceName}</div>
+            </template>
+          </div>
         </div>
-    </div>
+
+        <footer class="modal-footer">
+          <div class="footer-actions">
+            <lightning-button label="Retour" variant="brand" class="btn ghost" onclick={back}></lightning-button>
+            <lightning-button label="Terminer et Activer" variant="brand" class="btn" onclick={submit}></lightning-button>
+          </div>
+        </footer>
+
+      </div>
+    </section>
+  </template>
 </template>

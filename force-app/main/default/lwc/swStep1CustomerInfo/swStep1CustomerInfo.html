@@ -1,35 +1,69 @@
 <template>
-    <div class="box">
-        <div class="title">Étape 1 : Confirmation des informations</div>
+    <template if:true={isOpen}>
+        <div class="backdrop" onclick={handleCancel}></div>
 
-        <div class="form-card">
-            <lightning-input
-                label="Nom"
-                value={localAccountName}
-                oninput={handleName}>
-            </lightning-input>
+        <section class="modal" role="dialog" aria-modal="true">
+            <div class="modal-container" onclick={stopPropagation}>
 
-            <lightning-input
-                label="Adresse"
-                value={localAddress}
-                oninput={handleAddress}>
-            </lightning-input>
+                <!-- Header -->
+                <header class="modal-header">
+                    <h2 class="title">Confirmation des informations</h2>
+                    
+                </header>
 
-            <lightning-input
-                label="Numéro de téléphone"
-                value={localPhone}
-                oninput={handlePhone}>
-            </lightning-input>
-        </div>
+                <!-- ✅ Stepper moderne SIMPLE -->
+                <div class="stepper-container">
+                    <div class="stepper-line"></div>
 
-        <div class="actions">
-    <lightning-button
-        label="Valider et Continuer"
-        variant="brand"
-        class="chic-button"
-        onclick={next}>
-    </lightning-button>
-</div>
+                    <div class={step1Class}><span>1</span></div>
+                    <div class={step2Class}><span>2</span></div>
+                    <div class={step3Class}><span>3</span></div>
+                    <div class={step4Class}><span>4</span></div>
+                    <div class={step5Class}><span>5</span></div>
+                </div>
 
-    </div>
+                <!-- Body -->
+                <div class="modal-body">
+                    <div class="form-card">
+                        <lightning-input label="Nom"
+                            value={localAccountName}
+                            oninput={handleName}>
+                        </lightning-input>
+
+                        <lightning-input label="Adresse"
+                            value={localAddress}
+                            oninput={handleAddress}>
+                        </lightning-input>
+
+                        <lightning-input label="Numéro de téléphone"
+                            value={localPhone}
+                            oninput={handlePhone}>
+                        </lightning-input>
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <footer class="modal-footer">
+                <div class="footer-actions">
+                    <lightning-button
+                        label="Annuler"
+                        variant="brand"
+                        class="btn"
+                        onclick={handleCancel}>
+                    </lightning-button>
+
+                    <lightning-button
+                        label="Valider et Continuer"
+                        variant="brand"
+                        class="btn"
+                        onclick={next}>
+                    </lightning-button>
+                </div>
+            </footer>
+
+
+
+            </div>
+        </section>
+    </template>
 </template>

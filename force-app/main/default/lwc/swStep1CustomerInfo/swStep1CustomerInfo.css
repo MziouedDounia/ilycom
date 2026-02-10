@@ -1,72 +1,119 @@
-/* Conteneur principal */
-.box { 
-    background: #ffffff; 
-    padding: 15px; 
+/* Overlay */
+.backdrop{
+    position:fixed; inset:0;
+    background: rgba(0,0,0,.5);
+    backdrop-filter: blur(5px);
 }
 
-/* Titre */
-.title { 
-    font-weight: 900; 
-    font-size: 18px; 
-    margin-bottom: 20px; 
-    color: #00898d; 
+/* Modal */
+.modal{
+    position:fixed; inset:0;
+    display:grid;
+    place-items:center;
+}
+.modal-container{
+    width: 900px;
+    background:#fff;
+    border-radius:16px;
+    box-shadow: 0 16px 40px rgba(0,0,0,.25);
+    overflow:hidden;
 }
 
-/* Carte (comme sur ton image) */
-.form-card {
-    background-color: #f3f3f3;
-    border: 1px solid #e0e0e0;
-    border-radius: 12px;
-    padding: 20px;
-    max-width: 400px;
-    margin: 0 auto;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+/* Header */
+.modal-header{
+    padding:16px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid #eee;
+}
+.title{
+    margin:0;
+    font-size:18px;
+    font-weight:900;
+}
+.close-btn{
+    background:none;
+    border:none;
+    font-size:18px;
+    cursor:pointer;
 }
 
-/* Labels Salesforce (LWC compliant) */
-.form-card lightning-input .slds-form-element__label {
-    font-weight: 700;
-    color: #000000;
+/* ✅ Stepper moderne simple */
+.stepper-container{
+    position:relative;
+    display:flex;
+    justify-content:space-between;
+    margin:20px 40px;
+}
+.stepper-line{
+    position:absolute;
+    top:50%;
+    left:0;
+    right:0;
+    height:4px;
+    background:#e6ebee;
+    transform:translateY(-50%);
+    border-radius:999px;
+}
+.step{
+    z-index:1;
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    border:2px solid #cfd8dc;
+    background:#fff;
+    color:#6b7c86;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:700;
+}
+.step.active{
+    background:#00898d;
+    border-color:#00898d;
+    color:#fff;
+}
+.step.done{
+    background:#e7f6f6;
+    border-color:#00898d;
+    color:#00898d;
 }
 
-/* Champs input */
-.form-card lightning-input {
-    --slds-c-input-color-background: #ffffff;
-    --slds-c-input-radius-border: 8px;
-    margin-bottom: 12px;
+/* Body */
+.modal-body{ padding:20px; }
+.form-card{
+    background:#f5f6f7;
+    border-radius:12px;
+    padding:16px;
 }
 
-/* Zone bouton */
-.actions {
+.modal-footer{
+    padding: 18px;
+    border-top: 1px solid #eee;
+}
+
+/* ✅ conteneur réel des boutons */
+.footer-actions{
     display: flex;
     justify-content: center;
-    margin-top: 24px;
+    align-items: center;
+    gap: 5px;          /* ✅ distance exacte entre les boutons */
 }
 
-/* Bouton chic */
-.chic-button {
-    --slds-c-button-brand-color-background: #00898d;
-    --slds-c-button-brand-color-border: #00898d;
-    --slds-c-button-brand-color-text: #ffffff;
+/* ✅ empêche lightning-button d’occuper toute la largeur */
+.footer-actions lightning-button{
+    width: auto !important;
+    flex: 0 0 auto;
+}
 
-    --slds-c-button-brand-color-background-hover: #00767a;
-    --slds-c-button-brand-color-border-hover: #00767a;
+/* style bouton */
+.btn{
+    --slds-c-button-brand-color-background:#00898d;
+    --slds-c-button-brand-color-border:#00898d;
+    --slds-c-button-radius-border:999px;
 
-    --slds-c-button-brand-color-background-active: #006b6f;
-
-    --slds-c-button-radius-border: 14px;
-
-    font-weight: 700;
-    letter-spacing: 0.3px;
-
-    width: 100%;
-    max-width: 280px;
+    min-width: 100px;
     height: 44px;
+    font-weight: 700;
 }
-
-/* Optionnel : ombre élégante */
-.chic-button {
-    box-shadow: 0 6px 14px rgba(0, 137, 141, 0.25);
-}
-
-
