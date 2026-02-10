@@ -3,19 +3,18 @@ import search from '@salesforce/apex/SubscriptionSearchController.search';
 import { NavigationMixin } from 'lightning/navigation';
 
 export default class SubscriptionsHub extends NavigationMixin(LightningElement) {
-  @api accountId; // if used on Account page, Salesforce provides the recordId here
+  @api accountId;
   @track keyword = '';
   @track rows = [];
 
-  // ✅ "Contrat" becomes clickable and opens Account Cockpit (Account record page)
   columns = [
     {
       label: 'Contrat',
-      fieldName: 'accountUrl',
-      type: 'url',
+      type: 'button',
       typeAttributes: {
         label: { fieldName: 'Name' },
-        target: '_self'
+        name: 'openCockpit',
+        variant: 'base'
       }
     },
     { label: 'Client', fieldName: 'accountName' },
@@ -34,7 +33,7 @@ export default class SubscriptionsHub extends NavigationMixin(LightningElement) 
     this.rows = (data || []).map((r) => ({
       ...r,
       accountName: r.Account__r ? r.Account__r.Name : '',
-      accountUrl: r.Account__c ? `/lightning/r/Account/${r.Account__c}/view` : null
+      accountId: r.Account__c
     }));
   }
 
@@ -44,14 +43,33 @@ export default class SubscriptionsHub extends NavigationMixin(LightningElement) 
     this._t = window.setTimeout(() => this.load(), 250);
   }
 
+  handleRowAction(event) {
+    const actionName = event.detail.action.name;
+    const row = event.detail.row;
+
+    if (actionName === 'openCockpit') {
+      // IMPORTANT: apiName must match your tab name in the URL after /n/
+      // In your case it's Cockpit360
+      this[NavigationMixin.Navigate]({
+        type: 'standard__navItemPage',
+        attributes: {
+          apiName: 'Cockpit360'
+        },
+        state: {
+          c__accountId: row.accountId
+        }
+      });
+    }
+  }
+
   goToNewSubscription() {
-this[NavigationMixin.Navigate]({
-type: 'standard__navItemPage',
-attributes: {
-apiName: 'New_Subscription_Wizard' // <-- the TAB Developer Name
-    },
-state: {
-c__accountId: this.accountId // optional: if SubscriptionsHub is on Account 
+    this[NavigationMixin.Navigate]({
+    type: 'standard__navItemPage',
+    attributes: {
+    apiName: 'New_Subscription_Wizard' // <-- the TAB Developer Name
+     },
+      state: {
+      c__accountId: this.accountId // optional: if SubscriptionsHub is on Account 
     }
   });
 }

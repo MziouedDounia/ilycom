@@ -1,16 +1,15 @@
+/* cockpit360.css */
 .wrap {
   display: grid;
-  grid-template-columns: 300px 1fr 340px;
-  gap: 12px;
-  padding: 8px;
+  grid-template-columns: 280px 1fr 320px;
+  gap: 14px;
+  padding: 12px;
+  background: #f5f7fb;
+  min-height: 100%;
 }
 
-.left, .center, .right {
-  min-width: 0;
-}
+.left, .center, .right { min-width: 0; }
 
-@media (max-width: 1100px) {
-  .wrap {
-    grid-template-columns: 1fr;
-  }
+@media (max-width: 1200px) {
+  .wrap { grid-template-columns: 1fr; }
 }

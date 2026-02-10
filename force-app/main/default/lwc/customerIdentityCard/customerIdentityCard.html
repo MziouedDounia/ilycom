@@ -1,21 +1,31 @@
 <template>
-  <lightning-card title="Client">
-    <div class="pad">
-      <div class="name">{accountName}</div>
+  <section class="card">
+    <div class="header">
+      <div class="avatar" title="Client"></div>
 
-      <div class="muted slds-m-top_x-small">
-        <template if:true={phone}>📞 {phone}</template>
-        <template if:false={phone}>📞 —</template>
-      </div>
+      <div class="meta">
+        <div class="name">{accountName}</div>
+        <div class="sub">{subtitle}</div>
 
-      <div class="muted">
-        <template if:true={email}>✉️ {email}</template>
-        <template if:false={email}>✉️ —</template>
-      </div>
-
-      <div class="slds-m-top_small">
-        <lightning-button label="Ouvrir le compte" onclick={openAccount}></lightning-button>
+        <div class="icons">
+          <span class="i" title="Téléphone">📞</span>
+          <span class="i" title="Email">✉️</span>
+          <span class="i" title="Contrat">🧾</span>
+        </div>
       </div>
     </div>
-  </lightning-card>
+
+    <div class="actions">
+      <lightning-button
+        variant="brand"
+        label="Ouvrir le compte"
+        onclick={openAccount}>
+      </lightning-button>
+
+      <lightning-button
+        label="Créer une demande"
+        onclick={mockCreateRequest}>
+      </lightning-button>
+    </div>
+  </section>
 </template>

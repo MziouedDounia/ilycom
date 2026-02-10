@@ -1,18 +1,26 @@
 <template>
-  <lightning-card title="Profil / Préférences">
-    <div class="pad">
+  <section class="card">
+    <div class="title">Profiles</div>
+
+    <div class="seg">
+      <button class="segBtn active">Behavior</button>
+      <button class="segBtn">Calls</button>
+      <button class="segBtn">Roaming</button>
+    </div>
+
+    <div class="rows">
       <div class="row">
-        <div class="title">Contact SMS</div>
+        <div class="lbl">Contact SMS</div>
         <lightning-input type="toggle"></lightning-input>
       </div>
       <div class="row">
-        <div class="title">Contact Email</div>
+        <div class="lbl">Contact Email</div>
         <lightning-input type="toggle"></lightning-input>
       </div>
       <div class="row">
-        <div class="title">Roaming</div>
+        <div class="lbl">Roaming</div>
         <lightning-input type="toggle"></lightning-input>
       </div>
     </div>
-  </lightning-card>
+  </section>
 </template>

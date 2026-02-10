@@ -1,3 +1,52 @@
-.pad { padding: 12px; }
-.name { font-size: 18px; font-weight: 800; }
-.muted { color: #666; font-size: 12px; }
+.card{
+  background:#fff;
+  border-radius:18px;
+  padding:14px;
+  box-shadow:0 2px 10px rgba(0,0,0,.06);
+}
+
+.header{
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+
+.avatar{
+  width:54px;
+  height:54px;
+  border-radius:999px;
+  background: linear-gradient(135deg,#dfe7ff,#f5f7ff);
+  border:1px solid #edf0ff;
+}
+
+.meta{ min-width:0; }
+.name{
+  font-weight:900;
+  font-size:16px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.sub{ color:#6b7280; font-size:12px; margin-top:2px; }
+
+.icons{
+  display:flex;
+  gap:10px;
+  margin-top:10px;
+}
+.i{
+  width:28px;
+  height:28px;
+  display:grid;
+  place-items:center;
+  border:1px solid #eef0f6;
+  border-radius:10px;
+  background:#fff;
+}
+
+.actions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-top:14px;
+}
